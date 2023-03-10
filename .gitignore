@@ -4,3 +4,8 @@
 
 /.vs
 /src/.vs
+/src/Combinations/bin/Debug/netcoreapp3.1
+/src/Combinations/obj
+/src/CombinationsTests/bin/Debug/netcoreapp3.1
+/src/CombinationsTests/obj
+/src/TestResults/5bb02aad-9c39-41af-8181-542009f83764

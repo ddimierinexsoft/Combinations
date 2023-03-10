@@ -5,14 +5,36 @@ using System.Collections.Generic;
 namespace Combinations
 {
 
-    public class GeneratoreCombinazioniLineare<T> : IEnumerable<T[]>, IEnumerator<T[]>
+    public class Combinazioni<T> : IEnumerable<T[]> 
+    {
+        private readonly T[] elementi;
+        private readonly int numeroPosizioni;
+
+        public Combinazioni(T[] elementi, int numeroPosizioni)
+        {
+            this.elementi = (T[])elementi.Clone();
+            this.numeroPosizioni = numeroPosizioni;
+        }
+          
+        public IEnumerator<T[]> GetEnumerator()
+        {
+            return new CombinazioniEnumerator<T>(elementi, numeroPosizioni);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }   
+    }
+
+    public class CombinazioniEnumerator<T> : IEnumerator<T[]>
     {
         private readonly T[] elementi;
         private readonly int numeroPosizioni;
         private int[] indici;
         private int p;
 
-        public GeneratoreCombinazioniLineare(T[] elementi, int numeroPosizioni)
+        public CombinazioniEnumerator(T[] elementi, int numeroPosizioni)
         {
             this.elementi = (T[])elementi.Clone();
             this.numeroPosizioni = numeroPosizioni;
@@ -97,12 +119,7 @@ namespace Combinations
                 return string.Join(", ", Current);
             }
         }
-         
-        public IEnumerator<T[]> GetEnumerator()
-        {
-            return this;
-        }
-
+          
         void IDisposable.Dispose()
         {
             //NOTHING TO DO
@@ -114,11 +131,6 @@ namespace Combinations
             {
                 return Current;
             }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }           
+        }         
     }
 }

@@ -1,11 +1,10 @@
-using Combinations;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 
 namespace CombinationsTests
 {
-    [TestClass]
+	[TestClass]
     public class Benchmarks12
     {
         [TestMethod]
