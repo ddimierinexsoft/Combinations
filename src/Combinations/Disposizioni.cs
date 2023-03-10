@@ -5,12 +5,12 @@ using System.Collections.Generic;
 namespace Combinations
 {
 
-    public class Combinazioni<T> : IEnumerable<T[]> 
+    public class Disposizioni<T> : IEnumerable<T[]> 
     {
         private readonly T[] elementi;
         private readonly int numeroPosizioni;
 
-        public Combinazioni(T[] elementi, int numeroPosizioni)
+        public Disposizioni(T[] elementi, int numeroPosizioni)
         {
             this.elementi = (T[])elementi.Clone();
             this.numeroPosizioni = numeroPosizioni;
@@ -18,7 +18,7 @@ namespace Combinations
           
         public IEnumerator<T[]> GetEnumerator()
         {
-            return new CombinazioniEnumerator<T>(elementi, numeroPosizioni);
+            return new DisposizioniEnumerator<T>(elementi, numeroPosizioni);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -27,14 +27,14 @@ namespace Combinations
         }   
     }
 
-    public class CombinazioniEnumerator<T> : IEnumerator<T[]>
+    public class DisposizioniEnumerator<T> : IEnumerator<T[]>
     {
         private readonly T[] elementi;
         private readonly int numeroPosizioni;
         private int[] indici;
         private int p;
 
-        public CombinazioniEnumerator(T[] elementi, int numeroPosizioni)
+        public DisposizioniEnumerator(T[] elementi, int numeroPosizioni)
         {
             this.elementi = (T[])elementi.Clone();
             this.numeroPosizioni = numeroPosizioni;
